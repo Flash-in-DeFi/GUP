@@ -5,9 +5,9 @@ services:
     image: postgres:16-alpine
     container_name: gasless_offramp_db
     environment:
-      POSTGRES_USER: offramp
-      POSTGRES_PASSWORD: offramp_secret
-      POSTGRES_DB: gasless_offramp
+      POSTGRES_USER: ${POSTGRES_USER:-offramp}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-gasless_offramp}
     ports:
       - '5433:5432'
     volumes:

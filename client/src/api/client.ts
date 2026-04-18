@@ -28,7 +28,7 @@ export async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> 
     try {
       const body = await res.json()
       message = body.message || body.error || message
-    } catch {}
+    } catch { /* ignore parse errors, use default message */ }
     const err: ApiError = { status: res.status, message }
     throw err
   }

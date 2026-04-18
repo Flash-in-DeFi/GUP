@@ -17,6 +17,7 @@ describe('config/env', () => {
 
   it('throws when a required env var is missing', () => {
     delete process.env.DATABASE_URL;
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     expect(() => require('./env')).toThrow('Missing required environment variable: DATABASE_URL');
   });
 
@@ -34,6 +35,7 @@ describe('config/env', () => {
     process.env.FLUTTERWAVE_ENCRYPTION_KEY = 'enc-key';
     process.env.FLUTTERWAVE_WEBHOOK_SECRET = 'webhook-secret';
 
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const { config } = require('./env');
     expect(config.databaseUrl).toBe('postgresql://localhost/test');
     expect(config.fxSpread).toBe(0.01); // default
